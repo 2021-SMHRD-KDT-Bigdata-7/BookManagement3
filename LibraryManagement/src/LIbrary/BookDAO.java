@@ -72,7 +72,7 @@ public class BookDAO {
 		}
 		return cnt;
 	}
-	//select 메소드d
+	//select 메소드
 	public BookVo select(String b_id) {
 		
 		getConnect();
