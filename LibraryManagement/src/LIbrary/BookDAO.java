@@ -48,7 +48,7 @@ public class BookDAO {
 			}
 	}
 	
-	public int insert(String b_id, String b_title, String b_author, String b_publisher, String b_price) {
+	public int insert(String b_id, String b_title, String b_author, String b_publisher, int b_price) {
 		
 		getConnect();
 		
@@ -57,7 +57,11 @@ public class BookDAO {
 		
 		try {
 		psmt = conn.prepareStatement(sql);
-		
+		psmt.setString(1, b_id);
+		psmt.setString(2, b_title);
+		psmt.setString(3, b_author);
+		psmt.setString(4, b_publisher);
+		psmt.setInt(5, b_price);
 						  
 		cnt = psmt.executeUpdate();
 		
@@ -68,7 +72,7 @@ public class BookDAO {
 		}
 		return cnt;
 	}
-	//select 메소=드
+	//select 메소드
 	public BookVo select(String b_id) {
 		
 		getConnect();
@@ -123,8 +127,8 @@ public class BookDAO {
 		
 		psmt = conn.prepareStatement(sql);
 		psmt.setString(1, b_id);
-		psmt.setInt(1, b_price);
-		psmt.setString(1, b_id);
+		psmt.setInt(2, b_price);
+		psmt.setString(3, b_id);
 		
 		
 		cnt = psmt.executeUpdate();
