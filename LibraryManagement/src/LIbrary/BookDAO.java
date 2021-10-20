@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 public class BookDAO {
 	
 	Connection conn = null;
@@ -105,10 +106,24 @@ public class BookDAO {
 	public void selectAll() {
 		getConnect();
 		
-		sql = "select * from book";
+		
+					
+		ArrayList<BookVo> list = new ArrayList<BookVo>();
+				
 		
 		try {
+			sql = "select * from book";
+			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
+			while(rs.next()) {
+				BookVo bookvo = new BookVo();
+				bookvo.setb_id(rs.getString("b_id");
+				bookvo.setb_title(rs.getString("b_title");
+				bookvo.setb_authour(rs.getString("b_author");
+				bookvo.setb_publisher(rs.getString("b_publisher");
+				bookvo.setb_price(rs.getString("b_price");
+				list.add(bookvo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
