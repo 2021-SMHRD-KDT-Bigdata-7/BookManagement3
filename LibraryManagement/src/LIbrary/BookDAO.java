@@ -102,6 +102,7 @@ public class BookDAO {
 
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
+			
 			bv = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
 			
 			
