@@ -41,7 +41,7 @@ public class Main {
 				System.out.println("정보를 똑바로 확인하십시오");
 			}
 		 
-			int plus=dao.addBook(b_id,b_title,b_author,b_publisher,b_price);
+			int plus=dao.insert(b_id,b_title,b_author,b_publisher,b_price);
 			break;
 		case 2:
 			System.out.println("[1]특정도서조회 [2]전체조회");
@@ -49,7 +49,7 @@ public class Main {
 			if (b==1) {
 			System.out.println("책이름: ");
 			b_title = sc.next();
-			ResultSet sel = dao.selectBook(b_title);
+		    BookVo sel = dao.select(b_title);
 			if(sel != null) {
 				System.out.println("조회 완료 결과를 출력합니다.");
 			}else {
@@ -62,13 +62,11 @@ public class Main {
 			}
 			break;
 		case 3:
-		      System.out.print("책ID: ");
-		      b_id = sc.next();
-		      System.out.print("바꿀 책이름: ");
+		      System.out.print("책이름: ");
 		      b_title = sc.next();
 		      System.out.print("바뀔 책가격: ");
 		      b_price = sc.nextInt();
-		      int upd = dao.updateBook(b_id,b_title,b_price);
+		      int upd = dao.update(b_title,b_price);
 		      if(upd!=0) {
 			    System.out.println("수정 완료");
 		      }else {
@@ -78,7 +76,7 @@ public class Main {
 		case 4:
 			System.out.print("책ID: ");
 			b_id = sc.next();
-			int del=dao.deleteBook(b_id);
+			int del=dao.delete(b_id);
 			while (del==0) {
 			    System.out.println("올바른 정보를 입력해주세요");
 			    System.out.print("책ID: ");
