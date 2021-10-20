@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		
+//		BookVo bv = new BookVo();
+//		System.out.println(bv);
 		BookMangerment bm = new BookMangerment();
 		BookDAO dao =new BookDAO();
 		Scanner sc=new Scanner(System.in);

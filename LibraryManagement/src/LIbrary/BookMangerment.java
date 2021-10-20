@@ -57,9 +57,9 @@ public class BookMangerment {
 	int b_price;
 	
 		
-	public void addBook(String b_id,String b_title,String b_author,String b_publisher,int b_price) {
+	public void addBook(BookVo bv) {
 		BookDAO dao =new BookDAO();
-		int plus = dao.insert(b_id,b_title,b_author,b_publisher, b_price);
+		int plus = dao.insert(bv);
 	}
 	public String selectBook(String b_title) {
 		BookVo sel = dao.select(b_title);
