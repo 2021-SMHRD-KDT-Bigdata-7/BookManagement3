@@ -115,11 +115,8 @@ public class BookDAO {
 	public void selectAll() {
 		getConnect();
 		
-		
-					
 		ArrayList<BookVo> list = new ArrayList<BookVo>();
 				
-		
 		try {
 			sql = "select * from book";
 			psmt = conn.prepareStatement(sql);

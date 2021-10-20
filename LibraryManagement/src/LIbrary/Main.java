@@ -21,27 +21,27 @@ public class Main {
 		int a = sc.nextInt();
 		
 		switch(a) {
-//		case 1:
-//			System.out.print("등록 ID: ");
-//			b_id = sc.next();
-//			System.out.print("책 제목: ");
-//			b_title = sc.next();
-//			System.out.print("저자: ");
-//			b_author = sc.next();
-//			System.out.print("출판사: ");
-//			b_publisher = sc.next();
-//			System.out.print("가격: ");
-//			b_price=sc.nextInt();
-//			//dao 클래스에 있는 insert에 접근 할 수 있는 객체(new) 생성하기
-//			
-//			int cnt = dao.insert(b_id,b_title,b_author,b_publisher,b_price);
-//			if(cnt!=0) {
-//				System.out.println("책 등록에 성공하셨습니다");
-//			}else {
-//				System.out.println("정보를 똑바로 확인하십시오");
-//			}
-//		 
-//			break;
+		case 1:
+			System.out.print("등록 ID: ");
+			b_id = sc.next();
+			System.out.print("책 제목: ");
+			b_title = sc.next();
+			System.out.print("저자: ");
+			b_author = sc.next();
+			System.out.print("출판사: ");
+			b_publisher = sc.next();
+			System.out.print("가격: ");
+			b_price=sc.nextInt();
+			//dao 클래스에 있는 insert에 접근 할 수 있는 객체(new) 생성하기
+			
+			int cnt = dao.insert(b_id,b_title,b_author,b_publisher,b_price);
+			if(cnt!=0) {
+				System.out.println("책 등록에 성공하셨습니다");
+			}else {
+				System.out.println("정보를 똑바로 확인하십시오");
+			}
+		 
+			break;
 		case 2:
 			System.out.println("[1]특정도서조회 [2]전체조회");
 			int b = sc.nextInt();
