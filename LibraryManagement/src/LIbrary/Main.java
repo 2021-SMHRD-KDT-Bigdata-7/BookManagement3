@@ -14,6 +14,7 @@ public class Main {
 		String b_author;
 		String b_publisher;
 		int b_price;
+		
 		System.out.println("[JAVA 도서관리 프로그램]");
 		
 		int a = 0;
