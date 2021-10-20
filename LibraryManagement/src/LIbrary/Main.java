@@ -95,11 +95,7 @@ public class Main {
 			break;
 		}
 	}
-=======
-		
-		
 
->>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/BookManagement3.git
 	}
 
 }
