@@ -90,8 +90,8 @@ public class BookDAO {
 				b_id = rs.getString(1);
 				String b_title = rs.getString(2);
 				String b_author = rs.getString(3);
-				String b_publisher = rs.getString(2);
-				int b_price = rs.getInt(3);
+				String b_publisher = rs.getString(4);
+				int b_price = rs.getInt(5);
 				
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
