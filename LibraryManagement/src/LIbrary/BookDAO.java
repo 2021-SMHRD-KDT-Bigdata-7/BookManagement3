@@ -101,10 +101,19 @@ public class BookDAO {
 				b_price = rs.getInt(5);
 
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
-			}
 			
+				
+			}
 			bv = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
 			
+//			System.out.println(b_id);
+			if (b_id != "") {
+				System.out.println("조회 완료 결과를 출력합니다.");
+
+			} else {
+				System.out.println("조회 실패");
+				
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();

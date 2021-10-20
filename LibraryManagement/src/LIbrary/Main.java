@@ -59,11 +59,8 @@ public class Main {
 					b_title = sc.next();
 					BookVo sel = dao.select(b_title);
 					
-					if (sel != null) {
-						System.out.println("조회 완료 결과를 출력합니다.");
-					} else {
-						System.out.println("조회 실패");
-					}
+					
+					
 				} else if (b == 2) {
 
 					ArrayList<BookVo> list = dao.selectAll();
