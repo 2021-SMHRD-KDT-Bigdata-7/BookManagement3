@@ -74,15 +74,16 @@ public class BookDAO {
 		return cnt;
 	}
 	//select 메소드
-	public BookVo select(String sql) {
+	public BookVo select(String title) {
 		
 		getConnect();
 		BookVo bv = null;
 		try {
 			//2. sql문 전송단계
-			sql = "select * from book";
+			sql = "select * from book where b_title = ?";
 			
 			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, title);
 			
 			rs = psmt.executeQuery();
 			
@@ -112,7 +113,7 @@ public class BookDAO {
 		return bv;
 	}
 	
-	public void selectAll() {
+	public ArrayList<BookVo> selectAll() {
 		getConnect();
 		
 		ArrayList<BookVo> list = new ArrayList<BookVo>();
@@ -124,7 +125,6 @@ public class BookDAO {
 			while(rs.next()) {
 				BookVo bookvo = new BookVo(rs.getString("b_id"), rs.getString("b_title"), rs.getString("b_author"), rs.getString("b_publisher"), rs.getInt("b_price"));
 
-
 				list.add(bookvo);
 			}
 		} catch (SQLException e) {
@@ -132,6 +132,7 @@ public class BookDAO {
 		}finally {
 			close();
 		}
+		return list;
 		
 	}
 
