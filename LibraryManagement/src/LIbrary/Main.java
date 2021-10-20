@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-<<<<<<< HEAD
+
 		Dao dao =new Dao();
 		Scanner sc=new Scanner(System.in);
 		String b_id;
