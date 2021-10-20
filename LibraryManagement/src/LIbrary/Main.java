@@ -58,10 +58,11 @@ public class Main {
 					
 					ArrayList<BookVo> list = dao.selectAll();
 					for(int i=0; i<list.size(); i++) {
-						System.out.println("회원아이디:"+list.get(i));
+						System.out.println(list.get(i).getB_id() + " / "+ list.get(i).getB_title()+" / "+ list.get(i).getB_author()+"/"+list.get(i).getB_publisher()+"/"+list.get(i).getB_price());
+				
 					}
 
-				
+				break;
 				} else {
 					System.out.println("제대로 된 숫자를 입력해주세요");
 				}
