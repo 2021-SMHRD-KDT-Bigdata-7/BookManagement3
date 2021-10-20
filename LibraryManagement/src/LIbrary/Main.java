@@ -15,9 +15,10 @@ public class Main {
 		String b_publisher;
 		int b_price;
 		System.out.println("[JAVA 도서관리 프로그램]");
-		while (true) {
+		int a =0;
+		while (a<5) {
 			System.out.print("[1]도서등록 [2]도서조회 [3]정보수정 [4]도서삭제 [5]종료>>");
-			int a = sc.nextInt();
+			a = sc.nextInt();
 
 			switch (a) {
 			case 1:
