@@ -1,28 +1,26 @@
-	package LIbrary;
+package LIbrary;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 public class BookDAO {
 	
-
-
+	Connection conn = null;
+	PreparedStatement psmt = null;
+	ResultSet rs = null;
 	
-
-		Connection conn = null;
-		PreparedStatement psmt = null;
-		ResultSet rs = null;
-		
-		int cnt = 0;
-		
-		String sql;
+	int cnt = 0;
+	
+	String sql;
+	
+	BookVo book = new BookVo();
 		
 	public void getConnect() {
 			
 			try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			
 			
 			String url = "jdbc:oracle:thin:@192.168.1.241:1521:xe";
 			String user="hr";
@@ -31,23 +29,26 @@ public class BookDAO {
 			
 			}catch (Exception e) {
 				
-				
 				System.out.println("연결 오류 발생");
 				e.printStackTrace();  
 			} 
-		}
+	}
+	
 	public void close() {
 		try {
 			
 			if(rs != null) {rs.close();}	
 			if(psmt != null) {psmt.close();}
-			if(conn != null) {conn.close();}
+			if(conn != null) {conn.close();
+			
+			}
 			}catch (Exception e) {
 				
 				e.printStackTrace();
 			}
 	}
-	public int insert() {
+	
+	public int insert(String b_id, String b_title, String b_author, String b_publisher, int b_price) {
 		
 		getConnect();
 		
@@ -56,19 +57,23 @@ public class BookDAO {
 		
 		try {
 		psmt = conn.prepareStatement(sql);
-		
+		psmt.setString(1, b_id);
+		psmt.setString(2, b_title);
+		psmt.setString(3, b_author);
+		psmt.setString(4, b_publisher);
+		psmt.setInt(5, b_price);
 						  
-		result = psmt.executeUpdate();
+		cnt = psmt.executeUpdate();
 		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 			close();
 		}
-		return result;
+		return cnt;
 	}
-	//select 메소=드
-	public void select(String) {
+	//select 메소드
+	public BookVo select(String b_id) {
 		
 		getConnect();
 		
@@ -82,45 +87,51 @@ public class BookDAO {
 		
 			
 			while(rs.next()) {
-				String getId = rs.getString(1);
-				String getPw = rs.getString(2);
-				String getNick = rs.getString(3);
+				b_id = rs.getString(1);
+				String b_title = rs.getString(2);
+				String b_author = rs.getString(3);
+				String b_publisher = rs.getString(2);
+				int b_price = rs.getInt(3);
 				
-				System.out.println(get + " / "+ get+" / "+ get+"/"+get+"/"+get);
+				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 					close();
 		}
-		
+		return book;
 	}
 	public void selectAll() {
 		getConnect();
 		
 		sql = "select * from book";
 		
-		rs = psmt.executeQuery();
-		
-		
+		try {
+			rs = psmt.executeQuery();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		
 	}
 
 	//update메소드
-	public int update(String , int) {
+	public int update(String b_id, int b_price) {
 		
 		getConnect();
 		
 		
-		sql = "update book set";
+		sql = "update book set b_id = ?, b_price = ? where b_id=?";
 
 		try {
 		
-			psmt = conn.prepareStatement(sql);
-		psmt.setString(1, pw);
+		psmt = conn.prepareStatement(sql);
+		psmt.setString(1, b_id);
+		psmt.setInt(2, b_price);
+		psmt.setString(3, b_id);
 		
 		
-		result = psmt.executeUpdate();
+		cnt = psmt.executeUpdate();
 		
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -128,23 +139,23 @@ public class BookDAO {
 			//3. 데이터베이스 닫아주기
 			close();
 		}
-		return result;
+		
+		return cnt;
 	}
 	//delete 메소드
-	public int delete(String ) {
+	public int delete(String b_id) {
 		
 		getConnect();
 		
-		sql = "delete from member where id=? and pw=?";
+		sql = "delete from book where b_id=?";
 		try {
 		
 		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, id);
-		psmt.setString(2, pw);
+		psmt.setString(1, b_id);
 		
 		
 		
-		result =psmt.executeUpdate();
+		cnt =psmt.executeUpdate();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -152,7 +163,7 @@ public class BookDAO {
 			close();
 		}
 		
-		return result;
+		return cnt;
 	}
 		
 		
