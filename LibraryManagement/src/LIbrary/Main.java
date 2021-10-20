@@ -21,6 +21,7 @@ public class Main {
 		
 		switch(a) {
 		case 1:
+			
 			System.out.print("등록 ID: ");
 			b_id = sc.next();
 			System.out.print("책 제목: ");
@@ -33,8 +34,8 @@ public class Main {
 			b_price=sc.nextInt();
 			//dao 클래스에 있는 insert에 접근 할 수 있는 객체(new) 생성하기
 			
-			int cnt = dao.insert(b_id,b_title,b_author,b_publisher,b_price);
-			if(cnt!=0) {
+			BookVo bk = new BookVo(b_id,b_title,b_author,b_publisher,b_price);
+			if(bk != null) {
 				System.out.println("책 등록에 성공하셨습니다");
 			}else {
 				System.out.println("정보를 똑바로 확인하십시오");

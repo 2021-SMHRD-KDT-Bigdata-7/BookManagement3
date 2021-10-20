@@ -19,7 +19,7 @@ public class BookMangerment {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 
-			String url = "jdbc:oracle:thin:@localhost:1521:xe";
+			String url = "jdbc:oracle:thin:@192.168.1.241:1521:1521:xe";
 			String user = "hr";
 			String password = "hr";
 			conn = DriverManager.getConnection(url, user, password);
