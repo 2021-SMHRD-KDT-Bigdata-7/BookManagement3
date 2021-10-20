@@ -15,10 +15,12 @@ public class Main {
 		String b_publisher;
 		int b_price;
 		System.out.println("[JAVA 도서관리 프로그램]");
-
-		while (true) {
+		
+		int a = 0;
+		
+		while (a<5) {
 			System.out.print("[1]도서등록 [2]도서조회 [3]정보수정 [4]도서삭제 [5]종료>>");
-			int a = sc.nextInt();
+			a = sc.nextInt();
 
 			switch (a) {
 			case 1:
@@ -36,6 +38,11 @@ public class Main {
 				// dao 클래스에 있는 insert에 접근 할 수 있는 객체(new) 생성하기
 
 				BookVo bk = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
+				  
+			         
+			    dao.insert(bk);
+			         
+			         
 				if (bk != null) {
 					System.out.println("책 등록에 성공하셨습니다");
 				} else {
@@ -44,7 +51,7 @@ public class Main {
 
 				break;
 			case 2:
-				System.out.println("[1]특정도서조회 [2]전체조회");
+				System.out.print("[1]특정도서조회 [2]전체조회 >> ");
 				int b = sc.nextInt();
 				if (b == 1) {
 					System.out.println("책이름: ");
@@ -58,10 +65,13 @@ public class Main {
 				} else if (b == 2) {
 
 					ArrayList<BookVo> list = dao.selectAll();
-					for (int i = 0; i < list.size(); i++) {
-						System.out.println("회원아이디:" + list.get(i));
+					
+					for(int i=0; i<list.size(); i++) {
+						System.out.println(list.get(i).getB_id() + " / "+ list.get(i).getB_title()+" / "+ list.get(i).getB_author()+"/"+list.get(i).getB_publisher()+"/"+list.get(i).getB_price());
+				
 					}
 
+				break;
 				} else {
 					System.out.println("제대로 된 숫자를 입력해주세요");
 				}
