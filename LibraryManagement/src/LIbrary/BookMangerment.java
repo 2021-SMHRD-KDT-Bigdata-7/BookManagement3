@@ -56,18 +56,14 @@ public class BookMangerment {
 	String b_publisher;
 	int b_price;
 	
-	public dao BookManagement() {
 		
-	}
-		
-	public void addBook(void Bookvo(String b_id,String b_title,String b_author,String b_publisher,int b_price)) {
-		
-		
-	
+	public BookVo addBook(String b_id,String b_title,String b_author,String b_publisher,int b_price) {
+		return null;
 	}
 		
 	
 	public String selectBook(String b_title) {
+		return b_title;
 		
 	}
 	
