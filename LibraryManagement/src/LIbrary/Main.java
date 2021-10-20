@@ -87,13 +87,13 @@ public class Main {
 				System.out.print("책ID: ");
 				b_id = sc.next();
 				int del = dao.delete(b_id);
-				while (del == 0) {
-					System.out.println("올바른 정보를 입력해주세요");
-					System.out.print("책ID: ");
-					b_id = sc.next();
-					del = dao.delete(b_id);
-				}
+				if (del == 0) {
+					System.out.println("책 정보 삭제 실패");
+					
+				}else {
 				System.out.println("책 정보 삭제 완료");
+				}
+				
 				break;
 			case 5:
 				System.out.println("프로그램 종료");
