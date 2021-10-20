@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		Dao dao =new Dao();
+		BookDao dao =new BookDao();
 		Scanner sc=new Scanner(System.in);
 		String b_id;
 		String b_title;
