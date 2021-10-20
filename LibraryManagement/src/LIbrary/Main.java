@@ -1,13 +1,12 @@
 package LIbrary;
 
-import java.sql.ResultSet;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		
+		BookMangerment bm = new BookMangerment();
 		BookDAO dao =new BookDAO();
 		Scanner sc=new Scanner(System.in);
 		String b_id;
