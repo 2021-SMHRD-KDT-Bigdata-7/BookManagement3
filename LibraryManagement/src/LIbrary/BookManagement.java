@@ -16,11 +16,9 @@ public class BookManagement {
 		
 	public void addBook(Bookvo) {
 		
-		
-	cnt=dao.insert(b_id,b_title,b_author,b_publisher,b_price);	
+		cnt=dao.insert(b_id,b_title,b_author,b_publisher,b_price);	
 	}
 		
-	
 	public String selectBook(String) {
 		
 	}
