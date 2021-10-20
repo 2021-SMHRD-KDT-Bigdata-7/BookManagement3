@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 public class BookDAO {
 	
 	Connection conn = null;
@@ -48,7 +49,7 @@ public class BookDAO {
 			}
 	}
 	
-	public int insert(String b_id, String b_title, String b_author, String b_publisher, int b_price) {
+	public int insert(BookVo bv) {
 		
 		getConnect();
 		
@@ -57,11 +58,11 @@ public class BookDAO {
 		
 		try {
 		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, b_id);
-		psmt.setString(2, b_title);
-		psmt.setString(3, b_author);
-		psmt.setString(4, b_publisher);
-		psmt.setInt(5, b_price);
+		psmt.setString(1, bv.getB_id());
+		psmt.setString(2, bv.getB_title());
+		psmt.setString(3, bv.getB_author());
+		psmt.setString(4, bv.getB_publisher());
+		psmt.setInt(5, bv.getB_price());
 						  
 		cnt = psmt.executeUpdate();
 		
@@ -73,10 +74,10 @@ public class BookDAO {
 		return cnt;
 	}
 	//select 메소드
-	public BookVo select(String b_id) {
+	public BookVo select(String sql) {
 		
 		getConnect();
-		
+		BookVo bv = null;
 		try {
 			//2. sql문 전송단계
 			sql = "select * from book";
@@ -84,31 +85,51 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 			
 			rs = psmt.executeQuery();
-		
+			
+			String b_id = "";
+			String b_title = "";
+			String b_author = "";
+			String b_publisher = "";
+			int b_price = 0;
 			
 			while(rs.next()) {
 				b_id = rs.getString(1);
-				String b_title = rs.getString(2);
-				String b_author = rs.getString(3);
-				String b_publisher = rs.getString(2);
-				int b_price = rs.getInt(3);
-				
+				b_title = rs.getString(2);
+				b_author = rs.getString(3);
+				b_publisher = rs.getString(4);
+				b_price = rs.getInt(5);
+
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
+			bv = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
+			
+			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
 					close();
 		}
-		return book;
+		return bv;
 	}
+	
 	public void selectAll() {
 		getConnect();
 		
-		sql = "select * from book";
-		
+		ArrayList<BookVo> list = new ArrayList<BookVo>();
+				
 		try {
+			sql = "select * from book";
+			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
+			while(rs.next()) {
+				BookVo bookvo = new BookVo();
+				bookvo.setb_id(rs.getString("b_id");
+				bookvo.setb_title(rs.getString("b_title");
+				bookvo.setb_authour(rs.getString("b_author");
+				bookvo.setb_publisher(rs.getString("b_publisher");
+				bookvo.setb_price(rs.getString("b_price");
+				list.add(bookvo);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
