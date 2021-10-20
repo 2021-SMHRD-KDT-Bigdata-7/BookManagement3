@@ -14,6 +14,8 @@ public class BookDAO {
 	int cnt = 0;
 	
 	String sql;
+	
+	BookVo book = new BookVo();
 		
 	public void getConnect() {
 			
@@ -67,7 +69,7 @@ public class BookDAO {
 		return cnt;
 	}
 	//select ¸Þ¼Ò=µå
-	public void select() {
+	public BookVo select(String b_id) {
 		
 		getConnect();
 		
@@ -81,11 +83,11 @@ public class BookDAO {
 		
 			
 			while(rs.next()) {
-				String b_id = rs.getString(1);
+				b_id = rs.getString(1);
 				String b_title = rs.getString(2);
 				String b_author = rs.getString(3);
 				String b_publisher = rs.getString(2);
-				String b_price = rs.getString(3);
+				int b_price = rs.getInt(3);
 				
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
@@ -94,7 +96,7 @@ public class BookDAO {
 		}finally {
 					close();
 		}
-		
+		return book;
 	}
 	public void selectAll() {
 		getConnect();
