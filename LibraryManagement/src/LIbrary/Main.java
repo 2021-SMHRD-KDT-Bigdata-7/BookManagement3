@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
+<<<<<<< HEAD
 		Dao dao =new Dao();
 		Scanner sc=new Scanner(System.in);
 		String b_id;
@@ -94,6 +95,11 @@ public class Main {
 			break;
 		}
 	}
+=======
+		
+		
+
+>>>>>>> branch 'master' of https://github.com/2021-SMHRD-KDT-Bigdata-7/BookManagement3.git
 	}
 
 }
