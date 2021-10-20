@@ -14,13 +14,14 @@ public class Main {
 		String b_publisher;
 		int b_price;
 		System.out.println("[JAVA 도서관리 프로그램]");
-		while (true) {
-		System.out.print("[1]도서등록 [2]도서조회 [3]정보수정 [4]도서삭제 [5]종료>>");
-		int a = sc.nextInt();
 		
+		int a = 0;
+		while (a <5) {
+			
+		System.out.print("[1]도서등록 [2]도서조회 [3]정보수정 [4]도서삭제 [5]종료>>");
+		a = sc.nextInt();
 		switch(a) {
 		case 1:
-			
 			System.out.print("등록 ID: ");
 			b_id = sc.next();
 			System.out.print("책 제목: ");
@@ -41,6 +42,7 @@ public class Main {
 			}
 		 
 			break;
+		
 		case 2:
 			System.out.println("[1]특정도서조회 [2]전체조회");
 			int b = sc.nextInt();
@@ -59,6 +61,7 @@ public class Main {
 				System.out.println("제대로 된 숫자를 입력해주세요");
 			}
 			break;
+		
 		case 3:
 		      System.out.print("책이름: ");
 		      b_title = sc.next();

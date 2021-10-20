@@ -129,6 +129,8 @@ public class BookDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 	}
