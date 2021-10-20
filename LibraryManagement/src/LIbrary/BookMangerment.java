@@ -58,7 +58,7 @@ public class BookMangerment {
 	
 		
 	public void addBook(BookVo bv) {
-		bv = dao.insert(b_id,b_title,b_author,b_publisher, b_price);
+		dao.insert(bv);
 	}
 	public String selectBook(String b_title) {
 		BookVo sel = dao.select(b_title);
