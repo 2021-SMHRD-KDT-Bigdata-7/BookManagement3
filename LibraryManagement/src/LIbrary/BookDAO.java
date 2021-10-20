@@ -122,12 +122,9 @@ public class BookDAO {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				BookVo bookvo = new BookVo();
-				bookvo.setb_id(rs.getString("b_id");
-				bookvo.setb_title(rs.getString("b_title");
-				bookvo.setb_authour(rs.getString("b_author");
-				bookvo.setb_publisher(rs.getString("b_publisher");
-				bookvo.setb_price(rs.getString("b_price");
+				BookVo bookvo = new BookVo(rs.getString("b_id"), rs.getString("b_title"), rs.getString("b_author"), rs.getString("b_publisher"), rs.getInt("b_price"));
+
+
 				list.add(bookvo);
 			}
 		} catch (SQLException e) {
