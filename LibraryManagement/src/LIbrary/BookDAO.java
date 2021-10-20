@@ -95,9 +95,9 @@ public class BookDAO {
 				b_id = rs.getString(1);
 				b_title = rs.getString(2);
 				b_author = rs.getString(3);
-				b_publisher = rs.getString(2);
-				b_price = rs.getInt(3);
-				
+				b_publisher = rs.getString(4);
+				b_price = rs.getInt(5);
+
 				System.out.println(b_id + " / "+ b_title+" / "+ b_author+"/"+b_publisher+"/"+b_price);
 			}
 			bv = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
