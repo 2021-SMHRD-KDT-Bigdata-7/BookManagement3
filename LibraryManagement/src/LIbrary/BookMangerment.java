@@ -57,25 +57,24 @@ public class BookMangerment {
 	int b_price;
 	
 		
-	public BookVo addBook(String b_id,String b_title,String b_author,String b_publisher,int b_price) {
-		return null;
+	public void addBook(String b_id,String b_title,String b_author,String b_publisher,int b_price) {
+		BookDAO dao =new BookDAO();
+		int plus = dao.insert(b_id,b_title,b_author,b_publisher, b_price);
 	}
-		
-	
 	public String selectBook(String b_title) {
+		BookVo sel = dao.select(b_title);
 		return b_title;
 		
 	}
 	
 	public void selectAll() {
-		
+		dao.selectAll();
 	}
 	
 	public void updateBook(String b_id, int b_price) {
-		
+		int upd = dao.update(b_title,b_price);
 	}
 	public void deleteBook(String b_id) {
-
-
+		int del=dao.delete(b_id);
 }
 }
