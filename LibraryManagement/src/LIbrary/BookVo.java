@@ -32,6 +32,10 @@ public class BookVo {
 	public String getB_publisher() {
 		return this.b_publisher;
 	}
+	public int getB_price() {
+		return this.b_price;
+	}
+			
 
 	@Override
 	public String toString() {

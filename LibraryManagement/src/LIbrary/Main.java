@@ -40,7 +40,6 @@ public class Main {
 				System.out.println("정보를 똑바로 확인하십시오");
 			}
 		 
-			int plus=dao.insert(b_id,b_title,b_author,b_publisher,b_price);
 			break;
 		case 2:
 			System.out.println("[1]특정도서조회 [2]전체조회");
