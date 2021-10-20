@@ -34,14 +34,17 @@ public class Main {
 				b_price = sc.nextInt();
 				// dao 클래스에 있는 insert에 접근 할 수 있는 객체(new) 생성하기
 
-				BookVo bk = new BookVo(b_id, b_title, b_author, b_publisher, b_price);
-				if (bk != null) {
-					System.out.println("책 등록에 성공하셨습니다");
-				} else {
-					System.out.println("정보를 똑바로 확인하십시오");
-				}
-
-				break;
+				BookVo bk = new BookVo(b_id,b_title,b_author,b_publisher,b_price);
+		         
+		         dao.insert(bk);
+		         
+		         if(bk != null) {
+		            System.out.println("책 등록에 성공하셨습니다");
+		         }else {
+		            System.out.println("정보를 똑바로 확인하십시오");
+		         }
+		       
+		         break;
 			case 2:
 				System.out.println("[1]특정도서조회 [2]전체조회");
 				int b = sc.nextInt();

@@ -135,19 +135,18 @@ public class BookDAO {
 	}
 
 	//update¸Þ¼Òµå
-	public int update(String b_id, int b_price) {
+	public int update(String b_title, int b_price) {
 		
 		getConnect();
 		
 		
-		sql = "update book set b_id = ?, b_price = ? where b_id=?";
+		sql = "update book set b_price = ? where b_title=?";
 
 		try {
 		
 		psmt = conn.prepareStatement(sql);
-		psmt.setString(1, b_id);
-		psmt.setInt(2, b_price);
-		psmt.setString(3, b_id);
+		psmt.setString(2, b_title);
+		psmt.setInt(1, b_price);
 		
 		
 		cnt = psmt.executeUpdate();
